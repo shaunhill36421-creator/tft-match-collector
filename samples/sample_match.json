@@ -64,10 +64,12 @@
         "augments": ["TFT11_Augment_ExaltedI", "TFT9_Augment_BuiltDifferentIII", "TFT11_Augment_DummiesII"],
         "traits": [
           {"name": "Set11_Fortune", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 3},
+          {"name": "Set11_Invoker", "num_units": 2, "style": 1, "tier_current": 1, "tier_total": 3},
           {"name": "Set11_Bruiser", "num_units": 4, "style": 2, "tier_current": 2, "tier_total": 4}
         ],
         "units": [
           {"character_id": "TFT11_Tahmkench", "itemNames": ["TFT_Item_GargoyleStoneplate", "TFT_Item_SunfireCape"], "rarity": 4, "tier": 2},
+          {"character_id": "TFT11_Morgana", "itemNames": ["TFT_Item_HextechGunblade"], "rarity": 4, "tier": 1},
           {"character_id": "TFT11_Garen", "itemNames": ["TFT_Item_BrambleVest"], "rarity": 1, "tier": 3}
         ]
       },
@@ -123,9 +125,11 @@
         "total_damage_to_players": 55,
         "augments": ["TFT11_Augment_RichGetRicherPlus"],
         "traits": [
+          {"name": "Set11_Dragonlord", "num_units": 3, "style": 2, "tier_current": 1, "tier_total": 3},
           {"name": "Set11_Ghostly", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 4}
         ],
         "units": [
+          {"character_id": "TFT11_Morgana", "itemNames": [], "rarity": 4, "tier": 1},
           {"character_id": "TFT11_Kindred", "itemNames": ["TFT_Item_GuinsoosRageblade"], "rarity": 3, "tier": 2}
         ]
       },

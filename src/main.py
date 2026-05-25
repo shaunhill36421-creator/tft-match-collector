@@ -22,6 +22,7 @@ from pathlib import Path
 # nên import thẳng được (Python tự thêm thư mục của script vào đường dẫn tìm kiếm).
 import collector
 import summarizer
+import analyzer
 from riot_api import RiotApiError
 
 
@@ -133,12 +134,13 @@ def get_riot_id(settings: dict) -> str:
         return ""
 
 
-def save_outputs(match_id: str, match_data: dict, summary_text: str):
-    """Lưu file _raw.json và _summary.txt vào output/. Trả về (đường dẫn raw, summary)."""
+def save_outputs(match_id: str, match_data: dict, summary_text: str, analysis_text: str):
+    """Lưu 3 file vào output/. Trả về (đường dẫn raw, summary, analysis)."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     raw_path = OUTPUT_DIR / f"{match_id}_raw.json"
     summary_path = OUTPUT_DIR / f"{match_id}_summary.txt"
+    analysis_path = OUTPUT_DIR / f"{match_id}_analysis.txt"
 
     with open(raw_path, "w", encoding="utf-8") as f:
         json.dump(match_data, f, ensure_ascii=False, indent=2)
@@ -146,7 +148,10 @@ def save_outputs(match_id: str, match_data: dict, summary_text: str):
     with open(summary_path, "w", encoding="utf-8") as f:
         f.write(summary_text)
 
-    return raw_path, summary_path
+    with open(analysis_path, "w", encoding="utf-8") as f:
+        f.write(analysis_text)
+
+    return raw_path, summary_path, analysis_path
 
 
 def run_test_mode() -> int:
@@ -173,16 +178,23 @@ def run_test_mode() -> int:
         looked_up_puuid=sample_puuid,
         looked_up_riot_id="(người chơi mẫu)",
     )
+    analysis_text = analyzer.build_analysis(match_data, sample_puuid)
 
-    raw_path, summary_path = save_outputs(match_id, match_data, summary_text)
+    raw_path, summary_path, analysis_path = save_outputs(
+        match_id, match_data, summary_text, analysis_text
+    )
 
     print()
     print("✅ Đã tạo file kết quả từ dữ liệu mẫu:")
     print(f"   • {raw_path}")
     print(f"   • {summary_path}")
+    print(f"   • {analysis_path}")
     print()
     print("----- XEM TRƯỚC BẢN TÓM TẮT -----")
     print(summary_text)
+    print()
+    print("----- XEM TRƯỚC BẢN PHÂN TÍCH -----")
+    print(analysis_text)
     return 0
 
 
@@ -208,16 +220,20 @@ def run_live_mode() -> int:
         print("❌ " + exc.message)
         return 1
 
-    # Sinh tóm tắt và lưu file.
+    # Sinh tóm tắt + phân tích rồi lưu file.
     summary_text = summarizer.build_summary(
         match_data, looked_up_puuid=puuid, looked_up_riot_id=riot_id
     )
-    raw_path, summary_path = save_outputs(match_id, match_data, summary_text)
+    analysis_text = analyzer.build_analysis(match_data, puuid)
+    raw_path, summary_path, analysis_path = save_outputs(
+        match_id, match_data, summary_text, analysis_text
+    )
 
     print()
-    print("✅ HOÀN TẤT! Đã lưu 2 file vào thư mục output/:")
-    print(f"   • {raw_path.name}     (dữ liệu thô)")
-    print(f"   • {summary_path.name} (bản tóm tắt dễ đọc)")
+    print("✅ HOÀN TẤT! Đã lưu 3 file vào thư mục output/:")
+    print(f"   • {raw_path.name}      (dữ liệu thô)")
+    print(f"   • {summary_path.name}  (bản tóm tắt dễ đọc)")
+    print(f"   • {analysis_path.name} (phân tích & gợi ý cải thiện)")
     print(f"   Thư mục: {OUTPUT_DIR}")
     return 0
 
