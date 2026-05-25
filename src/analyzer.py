@@ -217,6 +217,87 @@ def _improvement_suggestions(info: dict, me: dict) -> list:
     return tips
 
 
+def _board_strength_score(p: dict) -> float:
+    """Điểm 'độ mạnh đội hình' thô (chỉ để so sánh tương đối giữa các nhà).
+
+    Không phải chỉ số chính thức của Riot — chỉ là heuristic gộp số 3-sao,
+    quân đủ đồ, mốc tộc mạnh và độ lấp sân.
+    """
+    units = p.get("units", [])
+    three_star = sum(1 for u in units if u.get("tier", 0) >= 3)
+    full_item = sum(1 for u in units if _item_count(u) >= FULL_ITEM_COUNT)
+    strong_traits = sum(1 for t in _active_traits(p) if t.get("style", 0) >= 3)
+    return three_star * 3 + full_item * 2 + strong_traits * 1 + len(units) * 0.5
+
+
+def _top_trait_name(p: dict) -> str:
+    traits = sorted(_active_traits(p),
+                    key=lambda t: (t.get("style", 0), t.get("num_units", 0)),
+                    reverse=True)
+    return traits[0].get("name", "-") if traits else "-"
+
+
+def _compare_houses(info: dict, me: dict) -> list:
+    """So sánh CẢ 8 NHÀ sau trận (phiên bản 'check từng nhà' khả thi từ dữ liệu cuối).
+
+    Đánh dấu nhà nào tranh đội hình trực tiếp với bạn (trùng tộc chính hoặc trùng
+    quân gánh), và nhà nào có đội hình mạnh hơn bạn theo điểm heuristic.
+    """
+    lines = []
+    participants = sorted(info.get("participants", []),
+                          key=lambda p: p.get("placement", 99))
+
+    # Đội hình "của bạn" để đối chiếu trùng lặp.
+    my_main_trait = _top_trait_name(me)
+    my_carry_ids = {u.get("character_id") for u in sorted(
+        me.get("units", []), key=lambda u: (_item_count(u), u.get("tier", 0)),
+        reverse=True)[:3]}
+    my_score = _board_strength_score(me)
+
+    lines.append(f"  {'Hạng':<5}{'Lv':<4}{'Sân':<5}{'3sao':<6}{'Điểm':<7}{'Tên / ghi chú'}")
+    lines.append(f"  {'-' * 68}")
+    for p in participants:
+        place = str(p.get("placement", "?"))
+        level = str(p.get("level", "?"))
+        board = str(len(p.get("units", [])))
+        three_star = str(sum(1 for u in p.get("units", []) if u.get("tier", 0) >= 3))
+        score = _board_strength_score(p)
+
+        is_me = p.get("puuid") == me.get("puuid")
+        name = "BẠN" if is_me else _player_short_name(p)
+
+        flags = []
+        if not is_me:
+            # Tranh đội hình? (trùng tộc chính hoặc trùng quân gánh)
+            shares_trait = any(t.get("name") == my_main_trait and t.get("style", 0) > 0
+                               for t in p.get("traits", [])) and my_main_trait != "-"
+            shares_carry = any(u.get("character_id") in my_carry_ids
+                               for u in p.get("units", [])) and bool(my_carry_ids)
+            if shares_trait or shares_carry:
+                flags.append("⚔️ tranh đội hình với bạn")
+            if score > my_score:
+                flags.append("mạnh hơn bạn")
+        note = f"  ({', '.join(flags)})" if flags else ""
+        lines.append(f"  {place:<5}{level:<4}{board:<5}{three_star:<6}{score:<7.1f}{name}{note}")
+
+    lines.append("")
+    lines.append("  Ghi chú: 'Điểm' là chỉ số ĐỘ MẠNH ĐỘI HÌNH thô (heuristic, không")
+    lines.append("  phải số liệu chính thức), chỉ dùng để so tương đối giữa các nhà.")
+    return lines
+
+
+def _player_short_name(p: dict) -> str:
+    """Tên ngắn của người chơi (tái dùng logic giống summarizer)."""
+    name = p.get("riotIdGameName") or p.get("riotIdName")
+    tag = p.get("riotIdTagline")
+    if name and tag:
+        return f"{name}#{tag}"
+    if name:
+        return name
+    puuid = p.get("puuid", "")
+    return f"(PUUID {puuid[:8]}...)" if puuid else "(không rõ)"
+
+
 def build_analysis(match_data: dict, puuid: str) -> str:
     """Tạo bản phân tích sâu (chuỗi nhiều dòng) cho người chơi có 'puuid'."""
     info = match_data.get("info", {})
@@ -265,6 +346,10 @@ def build_analysis(match_data: dict, puuid: str) -> str:
     out.append("[ 6. ĐIỂM CẦN CẢI THIỆN ]")
     for i, tip in enumerate(_improvement_suggestions(info, me), 1):
         out.append(f"  {i}. {tip}")
+
+    out.append("")
+    out.append("[ 7. SO SÁNH CẢ 8 NHÀ — 'check từng nhà' (sau trận) ]")
+    out.extend(_compare_houses(info, me))
 
     # Nói rõ phần KHÔNG phân tích được để không gây hiểu nhầm.
     out.append("")
