@@ -1,0 +1,22 @@
+# ===== Bí mật & dữ liệu thật: KHÔNG ĐƯỢC commit =====
+# API key thật của người dùng (chỉ giữ file mẫu api_key.example.txt)
+config/api_key.txt
+
+# Kết quả tải về từ Riot API (dữ liệu trận thật)
+# Dùng output/* (không phải output/) để vẫn giữ được file .gitkeep bên dưới.
+output/*
+!output/.gitkeep
+
+# ===== Rác của Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ===== Rác của hệ điều hành / IDE =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

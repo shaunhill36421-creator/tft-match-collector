@@ -1,0 +1,6 @@
+{
+  "account_region": "asia",
+  "match_region": "sea",
+  "default_riot_id": "",
+  "request_timeout_seconds": 15
+}

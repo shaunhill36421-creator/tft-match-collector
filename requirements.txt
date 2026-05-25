@@ -1,0 +1,3 @@
+# Thư viện ngoài duy nhất cần cài cho prototype này.
+# Mọi thứ còn lại đều dùng thư viện chuẩn của Python.
+requests>=2.31.0

@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "data_version": "5",
+    "match_id": "VN2_SAMPLE000001",
+    "participants": [
+      "puuid-player-01-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "puuid-player-02-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "puuid-player-03-cccccccccccccccccccccccccccccccccccc",
+      "puuid-player-04-dddddddddddddddddddddddddddddddddddd",
+      "puuid-player-05-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "puuid-player-06-ffffffffffffffffffffffffffffffffffff",
+      "puuid-player-07-gggggggggggggggggggggggggggggggggggg",
+      "puuid-player-08-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    ]
+  },
+  "info": {
+    "game_datetime": 1716600000000,
+    "game_length": 2145.7,
+    "game_version": "Version 14.10.123.4567 (May 23 2024/12:00:00) [PUBLIC] <Releases/14.10>",
+    "queue_id": 1100,
+    "tft_game_type": "standard",
+    "tft_set_core_name": "TFTSet11",
+    "tft_set_number": 11,
+    "participants": [
+      {
+        "puuid": "puuid-player-01-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "riotIdGameName": "NguoiChoiMau",
+        "riotIdTagline": "VN2",
+        "placement": 1,
+        "level": 9,
+        "gold_left": 12,
+        "last_round": 36,
+        "players_eliminated": 3,
+        "time_eliminated": 2145.7,
+        "total_damage_to_players": 142,
+        "augments": [
+          "TFT11_Augment_PortableForge",
+          "TFT9_Augment_TraitTrackerII",
+          "TFT11_Augment_CelestialBlessingII"
+        ],
+        "traits": [
+          {"name": "Set11_Dragonlord", "num_units": 3, "style": 2, "tier_current": 1, "tier_total": 3},
+          {"name": "Set11_Invoker", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 3},
+          {"name": "Set11_Sage", "num_units": 2, "style": 1, "tier_current": 1, "tier_total": 3}
+        ],
+        "units": [
+          {"character_id": "TFT11_Morgana", "itemNames": ["TFT_Item_ArchangelsStaff", "TFT_Item_RabadonsDeathcap", "TFT_Item_JeweledGauntlet"], "rarity": 4, "tier": 2},
+          {"character_id": "TFT11_Lillia", "itemNames": ["TFT_Item_WarmogsArmor", "TFT_Item_DragonsClaw"], "rarity": 3, "tier": 2},
+          {"character_id": "TFT11_Galio", "itemNames": [], "rarity": 0, "tier": 3},
+          {"character_id": "TFT11_Sett", "itemNames": ["TFT_Item_TitansResolve"], "rarity": 2, "tier": 1}
+        ]
+      },
+      {
+        "puuid": "puuid-player-02-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "riotIdGameName": "DoiThu02",
+        "riotIdTagline": "VN2",
+        "placement": 2,
+        "level": 8,
+        "gold_left": 3,
+        "last_round": 35,
+        "players_eliminated": 2,
+        "time_eliminated": 2098.4,
+        "total_damage_to_players": 110,
+        "augments": ["TFT11_Augment_ExaltedI", "TFT9_Augment_BuiltDifferentIII", "TFT11_Augment_DummiesII"],
+        "traits": [
+          {"name": "Set11_Fortune", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 3},
+          {"name": "Set11_Bruiser", "num_units": 4, "style": 2, "tier_current": 2, "tier_total": 4}
+        ],
+        "units": [
+          {"character_id": "TFT11_Tahmkench", "itemNames": ["TFT_Item_GargoyleStoneplate", "TFT_Item_SunfireCape"], "rarity": 4, "tier": 2},
+          {"character_id": "TFT11_Garen", "itemNames": ["TFT_Item_BrambleVest"], "rarity": 1, "tier": 3}
+        ]
+      },
+      {
+        "puuid": "puuid-player-03-cccccccccccccccccccccccccccccccccccc",
+        "riotIdGameName": "DoiThu03",
+        "riotIdTagline": "SG2",
+        "placement": 3,
+        "level": 8,
+        "gold_left": 0,
+        "last_round": 34,
+        "players_eliminated": 1,
+        "time_eliminated": 1990.0,
+        "total_damage_to_players": 95,
+        "augments": ["TFT11_Augment_TomeOfTraits", "TFT11_Augment_PandorasItems"],
+        "traits": [
+          {"name": "Set11_Heavenly", "num_units": 6, "style": 4, "tier_current": 3, "tier_total": 4},
+          {"name": "Set11_Behemoth", "num_units": 2, "style": 1, "tier_current": 1, "tier_total": 3}
+        ],
+        "units": [
+          {"character_id": "TFT11_Sylas", "itemNames": ["TFT_Item_Bloodthirster", "TFT_Item_GuardianAngel"], "rarity": 4, "tier": 2}
+        ]
+      },
+      {
+        "puuid": "puuid-player-04-dddddddddddddddddddddddddddddddddddd",
+        "riotIdGameName": "DoiThu04",
+        "riotIdTagline": "VN2",
+        "placement": 4,
+        "level": 8,
+        "gold_left": 8,
+        "last_round": 32,
+        "players_eliminated": 0,
+        "time_eliminated": 1850.2,
+        "total_damage_to_players": 70,
+        "augments": ["TFT11_Augment_CyberneticUplinkI"],
+        "traits": [
+          {"name": "Set11_Storyweaver", "num_units": 5, "style": 3, "tier_current": 2, "tier_total": 4}
+        ],
+        "units": [
+          {"character_id": "TFT11_Aatrox", "itemNames": ["TFT_Item_Redemption"], "rarity": 2, "tier": 2}
+        ]
+      },
+      {
+        "puuid": "puuid-player-05-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "riotIdGameName": "DoiThu05",
+        "riotIdTagline": "TW2",
+        "placement": 5,
+        "level": 7,
+        "gold_left": 1,
+        "last_round": 30,
+        "players_eliminated": 0,
+        "time_eliminated": 1700.0,
+        "total_damage_to_players": 55,
+        "augments": ["TFT11_Augment_RichGetRicherPlus"],
+        "traits": [
+          {"name": "Set11_Ghostly", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 4}
+        ],
+        "units": [
+          {"character_id": "TFT11_Kindred", "itemNames": ["TFT_Item_GuinsoosRageblade"], "rarity": 3, "tier": 2}
+        ]
+      },
+      {
+        "puuid": "puuid-player-06-ffffffffffffffffffffffffffffffffffff",
+        "riotIdGameName": "DoiThu06",
+        "riotIdTagline": "VN2",
+        "placement": 6,
+        "level": 7,
+        "gold_left": 22,
+        "last_round": 28,
+        "players_eliminated": 1,
+        "time_eliminated": 1600.5,
+        "total_damage_to_players": 40,
+        "augments": ["TFT11_Augment_HustleI"],
+        "traits": [
+          {"name": "Set11_Umbral", "num_units": 4, "style": 2, "tier_current": 1, "tier_total": 3}
+        ],
+        "units": [
+          {"character_id": "TFT11_Kayn", "itemNames": [], "rarity": 4, "tier": 1}
+        ]
+      },
+      {
+        "puuid": "puuid-player-07-gggggggggggggggggggggggggggggggggggg",
+        "riotIdGameName": "DoiThu07",
+        "riotIdTagline": "PH2",
+        "placement": 7,
+        "level": 6,
+        "gold_left": 4,
+        "last_round": 25,
+        "players_eliminated": 0,
+        "time_eliminated": 1450.0,
+        "total_damage_to_players": 25,
+        "augments": [],
+        "traits": [
+          {"name": "Set11_Warden", "num_units": 2, "style": 1, "tier_current": 1, "tier_total": 3}
+        ],
+        "units": [
+          {"character_id": "TFT11_Malphite", "itemNames": [], "rarity": 1, "tier": 2}
+        ]
+      },
+      {
+        "puuid": "puuid-player-08-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+        "riotIdGameName": "DoiThu08",
+        "riotIdTagline": "VN2",
+        "placement": 8,
+        "level": 6,
+        "gold_left": 0,
+        "last_round": 22,
+        "players_eliminated": 0,
+        "time_eliminated": 1280.0,
+        "total_damage_to_players": 10,
+        "augments": [],
+        "traits": [],
+        "units": [
+          {"character_id": "TFT11_Ahri", "itemNames": [], "rarity": 2, "tier": 1}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# File này chỉ để giữ thư mục output/ tồn tại trong git.
+# Mọi file kết quả thật trong thư mục này đều bị .gitignore loại trừ.
