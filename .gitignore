@@ -7,6 +7,11 @@ config/api_key.txt
 output/*
 !output/.gitkeep
 
+# ===== Thư mục module/dependency: KHÔNG push lên =====
+# (Node) nếu sau này có cài gì qua npm cho package.json
+node_modules/
+# (Python) môi trường ảo & cache nằm ở mục bên dưới
+
 # ===== Rác của Python =====
 __pycache__/
 *.py[cod]

@@ -1,0 +1,17 @@
+{
+  "name": "tft-match-collector",
+  "version": "0.1.0",
+  "description": "Prototype CLI Python thu thập dữ liệu trận TFT gần nhất qua Riot API chính thức.",
+  "private": true,
+  "scripts": {
+    "start": "python src/main.py",
+    "test": "python src/main.py --test"
+  },
+  "keywords": [
+    "tft",
+    "teamfight-tactics",
+    "riot-api",
+    "python"
+  ],
+  "license": "UNLICENSED"
+}
